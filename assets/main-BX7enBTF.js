@@ -2,7 +2,7 @@ import { f as Ve, R as mt, h as xn, D as _, C as yn, i as Wt, j as ft, k as bt, 
 import { r as c, j as u, u as vt, a as Mt, T as En, C as Ln, A as jn, O as Fn, c as In } from "./fiber-D1tVm3tX.js";
 import { E as Nn, B as zn } from "./post-Bq06d-T5.js";
 import { r as rt, c as K, ad as At, ae as ne, u as Ae, aa as We, ab as tt, a3 as Ke, af as fe, ag as qe, t as Dn, D as _t, ah as Ue, F as Ze, ai as Je, x as ae } from "./three-CbMnaw2G.js";
-const Bt = "/assets/intro/"
+const Bt = "./assets/intro/"
     , _n = "http://www.w3.org/2000/svg"
     , j = (t, e, n) => {
         const a = document.createElementNS(_n, t);
@@ -942,7 +942,7 @@ const de = {
         minSpeedMs: 28,
         maxTotalMs: 22e3
     }
-    , Zt = "/assets/nguyet-thu"
+    , Zt = "./assets/nguyet-thu"
     , Vn = 620
     , Wn = 300;
 function Kn(t) {
@@ -1253,7 +1253,7 @@ function Zn({ open: t, onClose: e, onOpenHeart: n, showHeart: a = !0, noiDung: r
                 title: "Mở trái tim",
                 "aria-label": "Mở trái tim",
                 children: u.jsx("img", {
-                    src: "/assets/ui/btn-heart.webp",
+                    src: "./assets/ui/btn-heart.webp",
                     alt: "",
                     draggable: !1
                 })
@@ -2499,7 +2499,7 @@ function za({ messages: t, color: e, fontName: n }) {
                     speed: 7 + Math.random() * 2,
                     phase: Math.random() * 2,
                     color: e ?? "#EE66A6",
-                    font: n ? `/font/${n}.ttf` : "/font/Mali.ttf"
+                    font: n ? `./font/${n}.ttf` : "./font/Mali.ttf"
                 }),
                     i++
             }
@@ -3011,7 +3011,7 @@ function eo() {
             text: de.paragraphs.join(`
 `)
         },
-        bgMusic: "./musics/bongtrang.mp3",
+        bgMusic: "./assets/music/bongtrang.mp3",
         palette: "hong",
         showWatermark: !1
     }
@@ -3035,7 +3035,7 @@ function Xe(t) {
         letter: {
             text: i
         },
-        musicUrl: Te(e.bgMusic) || Te("./musics/bongtrang.mp3"),
+        musicUrl: Te(e.bgMusic) || Te("./assets/music/bongtrang.mp3"),
         palette: n,
         color: mt[n].a,
         showWatermark: e.showWatermark === !0,
@@ -3164,9 +3164,9 @@ function io({ cauHinh: t, diaChi: e, preview: n }) {
             return;
         const w = window.matchMedia("(max-width: 767px)").matches
             , A = [];
-        t.enableLetter && (A.push(w ? "/assets/nguyet-thu/paper-straight.webp" : "/assets/nguyet-thu/paper.webp"),
-            A.push("/assets/nguyet-thu/rabbit-cloud.webp")),
-            t.enableHeart && A.push("/assets/ui/btn-heart.webp", t.couplePhoto),
+        t.enableLetter && (A.push(w ? "./assets/nguyet-thu/paper-straight.webp" : "./assets/nguyet-thu/paper.webp"),
+            A.push("./assets/nguyet-thu/rabbit-cloud.webp")),
+            t.enableHeart && A.push("./assets/ui/btn-heart.webp", t.couplePhoto),
             A.filter(Boolean).forEach(N => {
                 const E = new Image;
                 E.src = N
@@ -3261,7 +3261,6 @@ function io({ cauHinh: t, diaChi: e, preview: n }) {
             rel: "noopener noreferrer",
             "aria-label": "Tạo món quà của bạn tại DLove.vn",
             children: [u.jsx("img", {
-                src: "/assets/ui/logo-dlove.png",
                 alt: "",
                 width: "22",
                 height: "24",

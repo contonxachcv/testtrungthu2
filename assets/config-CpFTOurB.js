@@ -58,14 +58,14 @@ const T = S()
   , M = new Set(["index", "index.html", "config", "config.html", "payment-success", "payment-success.html", "payment-cancel", "preview", "assets", "font", "src", "favicon.ico", "robots.txt"])
   , P = /^\/([a-z0-9](?:[a-z0-9-]{1,28}[a-z0-9])?)$/i
   , E = "musics/"
-  , x = "/assets/music/";
+  , x = "./assets/music/";
 function K(e) {
     const t = String(e || "").trim();
     return t ? /^https?:\/\//i.test(t) ? t : t.startsWith(E) ? x + t.slice(E.length) : t : ""
 }
 function Y(e) {
     const t = String(e || "").trim();
-    return t ? /^https?:\/\//i.test(t) ? t : t.startsWith("assets/") ? "/" + t : t : ""
+    return t ? /^https?:\/\//i.test(t) ? t : t.startsWith("assets/") ? "./" + t : t : ""
 }
 const D = 45e3;
 function I() {
@@ -337,7 +337,7 @@ const W = 95
   , ht = ["hong", "vang"]
   , gt = "loverain:palette"
   , _ = {
-    url: "/assets/intro/06-lantern-distant.webp",
+    url: "./assets/intro/06-lantern-distant.webp",
     crop: {
         x: 160,
         y: 76,
@@ -349,7 +349,7 @@ const W = 95
     scale: 1
 }
   , G = [{
-    url: "/assets/rabbits/rabbit-flying-with-lantern.webp",
+    url: "./assets/rabbits/rabbit-flying-with-lantern.webp",
     crop: {
         x: 0,
         y: 0,
@@ -357,7 +357,7 @@ const W = 95
         h: 512
     }
 }, {
-    url: "/assets/rabbits/rabbit-flying-with-star.webp",
+    url: "./assets/rabbits/rabbit-flying-with-star.webp",
     crop: {
         x: 0,
         y: 0,
@@ -365,7 +365,7 @@ const W = 95
         h: 471
     }
 }, {
-    url: "/assets/rabbits/rabbit-sitting-golden-crescent.webp",
+    url: "./assets/rabbits/rabbit-sitting-golden-crescent.webp",
     crop: {
         x: 0,
         y: 0,
@@ -373,7 +373,7 @@ const W = 95
         h: 512
     }
 }, {
-    url: "/assets/rabbits/rabbit-sleeping-full-moon.webp",
+    url: "./assets/rabbits/rabbit-sleeping-full-moon.webp",
     crop: {
         x: 0,
         y: 0,
@@ -381,7 +381,7 @@ const W = 95
         h: 512
     }
 }, {
-    url: "/assets/rabbits/rabbit-sleeping-white-crescent.webp",
+    url: "./assets/rabbits/rabbit-sleeping-white-crescent.webp",
     crop: {
         x: 0,
         y: 0,
