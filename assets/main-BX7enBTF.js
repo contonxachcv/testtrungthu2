@@ -2766,7 +2766,7 @@ function Ba({ content: t, started: e, goHeartRef: n, onHeartBegin: a, coupleImgR
         })]
     })
 }
-const fn = "/assets/music/bongtrang.mp3"
+const fn = "./assets/music/bongtrang.mp3"
     , Ga = .55
     , Ha = 3e3
     , Xa = 700;
@@ -2878,7 +2878,7 @@ function Ja({ visible: t, onOpenHeart: e, onOpenLetter: n, showHeart: a, showLet
                 title: "Mở lá thư",
                 "aria-label": "Mở lá thư",
                 children: u.jsx("img", {
-                    src: "/assets/nguyet-thu/btn-letter.webp",
+                    src: "./assets/nguyet-thu/btn-letter.webp",
                     alt: "",
                     draggable: !1
                 })
@@ -2889,7 +2889,7 @@ function Ja({ visible: t, onOpenHeart: e, onOpenLetter: n, showHeart: a, showLet
                 title: "Mở trái tim",
                 "aria-label": "Mở trái tim",
                 children: u.jsx("img", {
-                    src: "/assets/ui/btn-heart.webp",
+                    src: "./assets/ui/btn-heart.webp",
                     alt: "",
                     draggable: !1
                 })
@@ -2990,7 +2990,7 @@ function Be({ loai: t, thongDiep: e, onThuLai: n, linkTao: a }) {
 }
 const Ge = {
     messages: ["Chào cậu mình iu cậu nhiều lắm", "Iu 1000 lần", "Iu em", "iu em nhiều lắm", "17/11/200X", "iu ní nhiều lắm", "Iu em nhất trên đời"],
-    images: ["/assets/images/1.jpg", "/assets/images/2.jpg", "/assets/images/3.jpg", "/assets/images/4.jpg", "/assets/images/5.jpg", "/assets/images/6.jpg","/assets/images/625a2866-caed-4ac9-8e7b-00599172ea16.jfif", "/assets/images/866ba173-1554-4491-905a-9b67fdcda533.jfif", "/assets/images/bcd1e29d-45e4-4b85-87ce-48879b53bb01.jfif"]
+    images: ["./assets/images/1.jpg", "./assets/images/2.jpg", "./assets/images/3.jpg", "./assets/images/4.jpg", "./assets/images/5.jpg", "./assets/images/6.jpg"]
 }
     , Qa = 20
     , to = 10;
@@ -3006,12 +3006,12 @@ function eo() {
         enableHeart: !0,
         flyingTexts: Ge.messages.slice(),
         flyingImages: Ge.images.map(t => t.replace(/^\//, "")),
-        couplePhoto: "assets/couple/couple.webp",
+        couplePhoto: "./assets/couple/couple.webp",
         letter: {
             text: de.paragraphs.join(`
 `)
         },
-        bgMusic: "musics/bongtrang.mp3",
+        bgMusic: "./musics/bongtrang.mp3",
         palette: "hong",
         showWatermark: !1
     }
@@ -3035,7 +3035,7 @@ function Xe(t) {
         letter: {
             text: i
         },
-        musicUrl: Te(e.bgMusic) || Te("musics/bongtrang.mp3"),
+        musicUrl: Te(e.bgMusic) || Te("./musics/bongtrang.mp3"),
         palette: n,
         color: mt[n].a,
         showWatermark: e.showWatermark === !0,
