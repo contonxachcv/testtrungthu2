@@ -285,20 +285,38 @@ function Gn(t) {
         n
 }
 async function Hn({ root: t, layout: e, kind: n, flags: a, timers: r, reg: o, isCancelled: i, onStart: s, onHide: f, markDone: l }) {
-    const { reduced: p, skyBlue: g, hiddenLayers: d } = a
-        , m = e.scene.referenceCanvas
-        , h = e.layers.find(y => y.id === "window-frame");
+    const { reduced: p, skyBlue: g, hiddenLayers: d } = a;
+    
+    // ✅ Fallback toàn bộ e nếu undefined
+    if (!e || !e.scene || !e.layers) {
+        console.warn("Layout không hợp lệ, bỏ qua animation");
+        s && s();
+        f && f();
+        return;
+    }
+    
+    const m = e.scene.referenceCanvas || {
+        viewBox: "0 0 551 900",
+        width: 551,
+        height: 900
+    };
+    const h = e.layers.find(y => y.id === "window-frame");
+    
     let x = null;
     try {
-        x = await Gn(h)
+        if (h) {
+            x = await Gn(h)
+        }
     } catch (y) {
         console.warn("Dùng đường cắt trong layout vì không suy được từ ảnh khung:", y)
     }
-    if (i())
-        return;
+    
+    if (i()) return;
+    
     const b = n === "d";
     t.classList.toggle("desktop", b),
         t.style.backgroundColor = e.scene.backgroundColor || "#050a14";
+    
     const v = j("svg", {
         class: "poster " + n,
         viewBox: m.viewBox,
@@ -306,20 +324,19 @@ async function Hn({ root: t, layout: e, kind: n, flags: a, timers: r, reg: o, is
         "aria-label": "Thiệp Trung thu",
         preserveAspectRatio: b ? "xMidYMid slice" : "xMidYMid meet"
     }, t);
-    let M = null
-        , C = null
-        , w = {
-            x: 0,
-            y: 0,
-            width: m.width,
-            height: m.height
-        };
+    
+    let M = null, C = null, w = {
+        x: 0,
+        y: 0,
+        width: m.width,
+        height: m.height
+    };
+    
     const A = () => {
-        if (b)
-            return;
-        const y = Math.min(innerWidth / m.width, innerHeight / m.height)
-            , R = innerWidth / y
-            , L = innerHeight / y;
+        if (b) return;
+        const y = Math.min(innerWidth / m.width, innerHeight / m.height),
+            R = innerWidth / y,
+            L = innerHeight / y;
         let st = (e.scene.portraitFocusY || m.height / 2) - L / 2;
         L >= m.height && (st = Math.max(m.height - L, Math.min(0, st))),
             w = {
@@ -337,25 +354,25 @@ async function Hn({ root: t, layout: e, kind: n, flags: a, timers: r, reg: o, is
                 M.setAttribute("y", w.y),
                 M.setAttribute("width", w.width),
                 M.setAttribute("height", w.height))
-    }
-        ;
+    };
+    
     A(),
         window.addEventListener("resize", A),
         o(() => window.removeEventListener("resize", A));
-    const N = j("defs", {}, v)
-        , E = j("clipPath", {
+    
+    const N = j("defs", {}, v),
+        E = j("clipPath", {
             id: "window-aperture",
             clipPathUnits: "userSpaceOnUse"
         }, N);
+    
     let P;
     if (x) {
-        const y = wt(h)
-            , R = y.width / h.asset.width
-            , L = y.height / h.asset.height;
+        const y = wt(h),
+            R = y.width / (h?.asset?.width || 1),
+            L = y.height / (h?.asset?.height || 1);
         E.setAttribute("transform", `translate(${y.x} ${y.y}) scale(${R} ${L})`),
-            j("path", {
-                d: x.d
-            }, E),
+            j("path", { d: x.d }, E),
             P = {
                 x: y.x + x.bbox.x * R,
                 y: y.y + x.bbox.y * L,
@@ -363,16 +380,23 @@ async function Hn({ root: t, layout: e, kind: n, flags: a, timers: r, reg: o, is
                 height: x.bbox.height * L
             }
     } else {
-        const R = j("path", {
-            d: e.clipPaths["window-aperture"].d
-        }, E).getBBox();
-        P = {
-            x: R.x,
-            y: R.y,
-            width: R.width,
-            height: R.height
+        // ✅ Kiểm tra clipPaths trước khi dùng
+        const clipData = e.clipPaths?.["window-aperture"];
+        if (clipData) {
+            const R = j("path", { d: clipData.d }, E).getBBox();
+            P = {
+                x: R.x,
+                y: R.y,
+                width: R.width,
+                height: R.height
+            }
+        } else {
+            // ✅ Fallback nếu không có clipPaths
+            P = { x: 0, y: 0, width: m.width, height: m.height };
         }
     }
+    
+    // ... tiếp tục phần còn lại của code
     const F = j("radialGradient", {
         id: "moon-halo-gradient"
     }, N);
@@ -2499,7 +2523,7 @@ function za({ messages: t, color: e, fontName: n }) {
                     speed: 7 + Math.random() * 2,
                     phase: Math.random() * 2,
                     color: e ?? "#EE66A6",
-                    font: n ? `./font/${n}.ttf` : "./font/Mali.ttf"
+                    font: n ? `./font/${n}.ttf` : "font/Mali.ttf"
                 }),
                     i++
             }
